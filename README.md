@@ -21,7 +21,7 @@
 
 爬取所有妹子的详细信息（多线程），保存文件为 jsonline 格式
 
-    scrapy crawl KcGzXh
+    scrapy crawl KcgzXh
     
 下载所有妹子的图片（多线程）
 
