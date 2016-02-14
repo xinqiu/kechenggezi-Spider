@@ -3,6 +3,7 @@
 import scrapy
 import json
 import re
+import random
 
 import requests
 
@@ -32,7 +33,7 @@ class XhImageDownloader(scrapy.Spider):
 
     def parse(self, response):
         yield scrapy.Request(
-            url='http://kechenggezi.com/campus_stars?page=1&cur_time=1455265064747',
+            url='http://kechenggezi.com/campus_stars?page=1&cur_time=145526506'+str(int(random.random() * 10000) % 10000).ljust(4,'0'),
             cookies=self.cookies,
             headers=self.headers,
             callback=self.parse_all
@@ -43,8 +44,8 @@ class XhImageDownloader(scrapy.Spider):
         total_pages = j['total_pages']
         for page in range(1, int(total_pages) + 1):
             yield scrapy.Request(
-                url='http://kechenggezi.com/campus_stars?page={}&cur_time=1455265064747'.format(
-                    page),
+                url='http://kechenggezi.com/campus_stars?page={0}&cur_time=145526506{1}'.format(
+                    page,str(int(random.random() * 10000) % 10000).ljust(4,'0')),
                 cookies=self.cookies,
                 headers=self.headers,
                 callback=self.parse_page
